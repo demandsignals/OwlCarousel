@@ -11,16 +11,21 @@
 /*JS Lint helpers: */
 /*global dragMove: false, dragEnd: false, $, jQuery, alert, window, document */
 /*jslint nomen: true, continue:true */
-
-if (typeof Object.create !== "function") {
-    Object.create = function (obj) {
-        function F() {}
-        F.prototype = obj;
-        return new F();
-    };
-}
-(function ($, window, document) {
-
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory(require('jquery'), root);
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory(root.$, root);
+    }
+}(this, function ($, window) {
+    //use b in some fashion.
     var Carousel = {
         init : function (options, el) {
             var base = this;
@@ -1201,7 +1206,7 @@ if (typeof Object.create !== "function") {
                 iterations += 1;
                 if (base.completeImg($lazyImg.get(0)) || isBackgroundImg === true) {
                     showImage();
-                } else if (iterations <= 100) {//if image loads in less than 10 seconds 
+                } else if (iterations <= 100) {//if image loads in less than 10 seconds
                     window.setTimeout(checkLazyImage, 100);
                 } else {
                     showImage();
@@ -1230,7 +1235,7 @@ if (typeof Object.create !== "function") {
                 iterations += 1;
                 if (base.completeImg($currentimg.get(0))) {
                     addHeight();
-                } else if (iterations <= 100) { //if image loads in less than 10 seconds 
+                } else if (iterations <= 100) { //if image loads in less than 10 seconds
                     window.setTimeout(checkImage, 100);
                 } else {
                     base.wrapperOuter.css("height", ""); //Else remove height attribute
@@ -1514,4 +1519,13 @@ if (typeof Object.create !== "function") {
         startDragging : false,
         afterLazyLoad: false
     };
-}(jQuery, window, document));
+
+    // Just return a value to define the module export.
+    // This example returns an object, but the module
+    // can return a function as the exported value.
+    return $;
+}));
+
+
+
+
