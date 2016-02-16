@@ -21,7 +21,7 @@
         // Browser globals (root is window)
         root.returnExports = factory(root.$, root);
     }
-}(this, function ($, window) {
+}(window, function ($, window) {
     //use b in some fashion.
     var Carousel = {
         init : function (options, el) {
