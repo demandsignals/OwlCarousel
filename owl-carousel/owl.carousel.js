@@ -329,11 +329,11 @@
             var base = this,
                 width = base.$owlItems.length * base.itemWidth;
 
-            base.$owlWrapper.css({
-                "width": width * 2,
-                "left": 0
-            });
-            base.appendItemsSizes();
+            // base.$owlWrapper.css({
+            //     "width": width * 2,
+            //     "left": 0
+            // });
+            // base.appendItemsSizes();
         },
 
         calculateAll : function () {
@@ -1483,7 +1483,7 @@
         pagination : true,
         paginationNumbers : false,
 
-        responsive : true,
+        responsive : false,
         responsiveRefreshRate : 200,
         responsiveBaseWidth : window,
 
