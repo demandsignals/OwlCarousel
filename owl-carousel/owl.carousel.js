@@ -329,11 +329,11 @@
             var base = this,
                 width = base.$owlItems.length * base.itemWidth;
 
-            // base.$owlWrapper.css({
-            //     "width": width * 2,
-            //     "left": 0
-            // });
-            // base.appendItemsSizes();
+            base.$owlWrapper.css({
+                "width": width * 2,
+                "left": 0
+            });
+            base.appendItemsSizes();
         },
 
         calculateAll : function () {
