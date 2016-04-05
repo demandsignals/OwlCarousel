@@ -228,7 +228,9 @@
                 return false;
             }
 
+            // this will reset the width without merging groups together
             width = $(base.options.responsiveBaseWidth).width();
+            return false;
 
             if (width > (base.options.itemsDesktop[0] || base.orignalItems)) {
                 base.options.items = base.orignalItems;
